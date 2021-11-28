@@ -20,6 +20,7 @@ var orbital_element: OrbitalElementType:
 	get: return _orbital_element
 	set(value):
 		_orbital_element = value
+		notify_property_list_changed()
 
 var _N: float # Longitude of the ascending node.
 var N: float:
@@ -73,4 +74,18 @@ func get_orbital_elements(timeScale: float) -> void:
 			a = 60.2666
 			e = 0.054900
 			M = 115.3654 + 13.0649929509 * timeScale
+
+func _get_property_list():
+	var ret: Array
+	ret.push_back({name = "Orbital Element", type=TYPE_NIL, usage=PROPERTY_USAGE_CATEGORY})
+	ret.push_back({name = "orbital_element", type=TYPE_INT, hint=PROPERTY_HINT_ENUM, hint_string="Sun, Moon, Custom"})
 	
+	if orbital_element == OrbitalElementType.Custom:
+		ret.push_back({name = "N", type=TYPE_FLOAT})
+		ret.push_back({name = "i", type=TYPE_FLOAT})
+		ret.push_back({name = "w", type=TYPE_FLOAT})
+		ret.push_back({name = "a", type=TYPE_FLOAT})
+		ret.push_back({name = "e", type=TYPE_FLOAT})
+		ret.push_back({name = "M", type=TYPE_FLOAT})
+	
+	return ret
