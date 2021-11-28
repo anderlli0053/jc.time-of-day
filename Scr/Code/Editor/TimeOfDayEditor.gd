@@ -1,11 +1,11 @@
 @tool
 class_name TimeOfDayEditor extends EditorPlugin
 
-const _TimeOfDayScript = preload("res://addons/jc.time-of-day/Scr/Code/TimeOfDay/TimeOfDay.gd")
-const _TimeOfDayIcon = preload("res://Default/icon.png")
+const _SunScript = preload("res://addons/jc.time-of-day/Scr/Code/Celestials/Sun/Sun.gd")
+const _SunIcon = preload("res://addons/jc.time-of-day/Scr/Graphics/Icons/DirectionalLight3D.svg")
 
 func _enter_tree():
-	add_custom_type("TimeOfDay", "Node", _TimeOfDayScript, _TimeOfDayIcon)
+	add_custom_type("Sun", "Node3D", _SunScript, _SunIcon)
 
 func _exit_tree():
-	remove_custom_type("TimeOfDay");
+	remove_custom_type("Sun");
