@@ -13,46 +13,52 @@ class_name OrbitalElement extends Resource
 #°               J. Cuellar 2021. MIT License.
 #°                   See: LICENSE File.
 #========================================================
-enum OrbitalElementType{ Sun = 0, Moon = 1, Custom = 2 }
+enum OrbitalElementType{ Sun = 0, Moon = 1 }
 
 var _orbital_element: OrbitalElementType = OrbitalElementType.Sun
 var orbital_element: OrbitalElementType:
 	get: return _orbital_element
 	set(value):
 		_orbital_element = value
-		notify_property_list_changed()
+	#	notify_property_list_changed()
 
-var _N: float # Longitude of the ascending node.
+# Longitude of the ascending node.
+var _N: float 
 var N: float:
 	get: return _N
 	set(value):
 		_N = value
 
-var _i: float # The Inclination to the ecliptic.
+# The Inclination to the ecliptic.
+var _i: float 
 var i: float:
 	get: return _i
 	set(value):
 		_i = value
 
-var _w: float # Argument of perihelion.
+# Argument of perihelion.
+var _w: float 
 var w: float:
 	get: return _w
 	set(value):
 		_w = value
 
-var _a: float # Semi-major axis, or mean distance from sun.
+# Semi-major axis, or mean distance from sun.
+var _a: float 
 var a: float:
 	get: return _a
 	set(value):
 		_a = value
 
-var _e: float # Eccentricity.
+# Eccentricity.
+var _e: float 
 var e: float:
 	get: return _e
 	set(value):
 		_e = value
 
-var _M: float # Mean anomaly
+# Mean anomaly
+var _M: float 
 var M: float:
 	get: return _M
 	set(value):
@@ -75,17 +81,17 @@ func get_orbital_elements(timeScale: float) -> void:
 			e = 0.054900
 			M = 115.3654 + 13.0649929509 * timeScale
 
-func _get_property_list():
-	var ret: Array
-	ret.push_back({name = "Orbital Element", type=TYPE_NIL, usage=PROPERTY_USAGE_CATEGORY})
-	ret.push_back({name = "orbital_element", type=TYPE_INT, hint=PROPERTY_HINT_ENUM, hint_string="Sun, Moon, Custom"})
+#func _get_property_list():
+#	var ret: Array
+#	ret.push_back({name = "Orbital Element", type=TYPE_NIL, usage=PROPERTY_USAGE_CATEGORY})
+#	ret.push_back({name = "orbital_element", type=TYPE_INT, hint=PROPERTY_HINT_ENUM, hint_string="Sun, Moon, Custom"})
 	
-	if orbital_element == OrbitalElementType.Custom:
-		ret.push_back({name = "N", type=TYPE_FLOAT})
-		ret.push_back({name = "i", type=TYPE_FLOAT})
-		ret.push_back({name = "w", type=TYPE_FLOAT})
-		ret.push_back({name = "a", type=TYPE_FLOAT})
-		ret.push_back({name = "e", type=TYPE_FLOAT})
-		ret.push_back({name = "M", type=TYPE_FLOAT})
-	
-	return ret
+#	if orbital_element == OrbitalElementType.Custom:
+#		ret.push_back({name = "N", type=TYPE_FLOAT})
+#		ret.push_back({name = "i", type=TYPE_FLOAT})
+#		ret.push_back({name = "w", type=TYPE_FLOAT})
+#		ret.push_back({name = "a", type=TYPE_FLOAT})
+#		ret.push_back({name = "e", type=TYPE_FLOAT})
+#		ret.push_back({name = "M", type=TYPE_FLOAT})
+#	
+#	return ret
