@@ -6,6 +6,6 @@ const _SunIcon = preload("res://addons/jc.time-of-day/Scr/Graphics/Icons/Directi
 
 func _enter_tree():
 	add_custom_type("Sun", "Node3D", _SunScript, _SunIcon)
-
+	
 func _exit_tree():
 	remove_custom_type("Sun");
